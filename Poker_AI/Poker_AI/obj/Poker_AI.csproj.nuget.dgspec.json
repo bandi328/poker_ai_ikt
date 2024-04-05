@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\András\\Desktop\\Poker_AI\\Poker_AI\\Poker_AI.csproj": {}
+    "C:\\Users\\András\\Desktop\\poker_ai_ikt\\Poker_AI\\Poker_AI\\Poker_AI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\András\\Desktop\\Poker_AI\\Poker_AI\\Poker_AI.csproj": {
+    "C:\\Users\\András\\Desktop\\poker_ai_ikt\\Poker_AI\\Poker_AI\\Poker_AI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\András\\Desktop\\Poker_AI\\Poker_AI\\Poker_AI.csproj",
+        "projectUniqueName": "C:\\Users\\András\\Desktop\\poker_ai_ikt\\Poker_AI\\Poker_AI\\Poker_AI.csproj",
         "projectName": "Poker_AI",
-        "projectPath": "C:\\Users\\András\\Desktop\\Poker_AI\\Poker_AI\\Poker_AI.csproj",
+        "projectPath": "C:\\Users\\András\\Desktop\\poker_ai_ikt\\Poker_AI\\Poker_AI\\Poker_AI.csproj",
         "packagesPath": "C:\\Users\\András\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\András\\Desktop\\Poker_AI\\Poker_AI\\obj\\",
+        "outputPath": "C:\\Users\\András\\Desktop\\poker_ai_ikt\\Poker_AI\\Poker_AI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\András\\AppData\\Roaming\\NuGet\\NuGet.Config",
