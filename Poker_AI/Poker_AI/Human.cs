@@ -11,7 +11,7 @@ namespace Poker_AI
         public int Bet(int Money)
         {
             string[] bet = Console.ReadLine().Split("$");
-            while (int.Parse(bet[0]) <= 0 && int.Parse(bet[0]) <= Money)
+            while ((int.Parse(bet[0]) >= 0 && int.Parse(bet[0]) <= Money) == false)
             {
                 Console.WriteLine("Rossz összeget adott meg. Tét: ");
                 bet = Console.ReadLine().Split();

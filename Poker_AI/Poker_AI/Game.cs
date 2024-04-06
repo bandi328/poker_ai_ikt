@@ -45,5 +45,23 @@ namespace Poker_AI
             dealtCards.Add(dealtCard);
             return dealtCard;
         }
+        public void HandListing(Player player)
+        {
+            foreach (var item in player.Hand)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        public int[] BiddingRound(Human human, AI ai)
+        {
+            int humanBet = human.Bet(human.Money);
+            human.Money -= humanBet;
+            int aiBet = ai.Bet(human.Money, humanBet);
+            ai.Money -= aiBet;
+
+            int[] bidding = { humanBet, aiBet};
+            return bidding;
+        }
     }
 }

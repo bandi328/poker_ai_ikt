@@ -9,6 +9,6 @@ namespace Poker_AI
     public class Player
     {
         public int Money = 200;
-        public List<string> Hand = new List<string> { };
+        public List<string> Hand;
     }
 }

@@ -27,10 +27,20 @@ namespace Poker_AI
             
         //esély alapján tét rakása/dobás/emelés/skippelés
 
-        //public int Hands(string dealer, string hand)
+        //public int Hands(string dealer, )
         //{
 
         //}
 
+
+        //hand keresés
+
+
+        //tét
+        public int Bet(int Money, int humanBet)
+        {
+            int bet = 0;
+            return bet;
+        }
     }
 }
