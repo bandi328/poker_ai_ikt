@@ -1,5 +1,4 @@
 C:\Users\András\Desktop\poker_ai_ikt\Poker_AI\Poker_AI\bin\Debug\net6.0\Poker_AI.exe
-C:\Users\András\Desktop\poker_ai_ikt\Poker_AI\Poker_AI\bin\Debug\net6.0\cards.txt
 C:\Users\András\Desktop\poker_ai_ikt\Poker_AI\Poker_AI\bin\Debug\net6.0\Poker_AI.deps.json
 C:\Users\András\Desktop\poker_ai_ikt\Poker_AI\Poker_AI\bin\Debug\net6.0\Poker_AI.runtimeconfig.json
 C:\Users\András\Desktop\poker_ai_ikt\Poker_AI\Poker_AI\bin\Debug\net6.0\Poker_AI.dll

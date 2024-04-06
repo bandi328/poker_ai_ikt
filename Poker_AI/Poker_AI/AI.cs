@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Poker_AI
 {
-    public class AI
+    public class AI : Player
     {
         //kombinációk keresése, sorbaállítása, legjobb kiválasztása
             //1-10 pontozás, súlyozás (kivéve Royal Flush, ez esetén akár ALL IN) lap értékéből
@@ -27,9 +27,10 @@ namespace Poker_AI
             
         //esély alapján tét rakása/dobás/emelés/skippelés
 
-        public int Hands()
-        {
+        //public int Hands(string dealer, string hand)
+        //{
 
-        }
+        //}
+
     }
 }
