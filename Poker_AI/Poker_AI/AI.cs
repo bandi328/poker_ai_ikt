@@ -39,8 +39,7 @@ namespace Poker_AI
         //tét
         public int Bet(int Money, int humanBet)
         {
-            int bet = 0;
-            return bet;
+            return humanBet;
         }
     }
 }
