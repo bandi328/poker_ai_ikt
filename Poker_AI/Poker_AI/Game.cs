@@ -24,7 +24,7 @@ namespace Poker_AI
         {
 
             int decision = 1;
-            while(decision != 5 && decision != 0)
+            while(decision != 5 || decision != 0)
             {
                 Console.Write("Kezdőlicit: ");
                 decision = int.Parse(Console.ReadLine());
@@ -45,7 +45,7 @@ namespace Poker_AI
                 }
             }
             return true;
-            
+
         }
         public void Burning(Cards cards)
         {

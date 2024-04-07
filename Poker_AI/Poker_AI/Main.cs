@@ -41,7 +41,6 @@ while (decision)
     {
         tableCards.Add("?");
     }
-
     //beszállás
     Console.WriteLine($"Játékos tőke: {human.Money}");
     Console.WriteLine($"AI tőke: {ai.Money}");
@@ -57,7 +56,6 @@ while (decision)
     Thread.Sleep(2000);
     Console.Clear();
 
-    game.Burning(cards);
     //osztás
 
     for (int i = 0; i < 2; i++)
@@ -70,7 +68,14 @@ while (decision)
     if(InitiateBidding(tableCards))
         break;
 
+
+    Console.WriteLine(
+    new HandCheck().CheckHand(new List<string> { ai.Hand[0], ai.Hand[1] })
+    );
+    Thread.Sleep(5000);
+
     //flop
+    game.Burning(cards);
     for (int i = 0; i < 3; i++)
     {
         tableCards[i] = game.Dealing(cards);
@@ -80,20 +85,27 @@ while (decision)
     //2. licit
     if (InitiateBidding(tableCards))
         break;
+    Console.WriteLine(new HandCheck().CheckHand(new List<string> { ai.Hand[0], ai.Hand[1], tableCards[0], tableCards[1], tableCards[2] }));
+
 
     //turn
+    game.Burning(cards);
     tableCards[3] = game.Dealing(cards);
 
     //3. licit
     if (InitiateBidding(tableCards))
         break;
+    Console.WriteLine(new HandCheck().CheckHand(new List<string> { ai.Hand[0], ai.Hand[1], tableCards[0], tableCards[1], tableCards[2], tableCards[3] }));
+
 
     //river
-
+    game.Burning(cards);
+    tableCards[4] = game.Dealing(cards);
 
     //4., utolsó licit 
     if (InitiateBidding(tableCards))
         break;
+    Console.WriteLine(new HandCheck().CheckHand(new List<string> { ai.Hand[0], ai.Hand[1], tableCards[0], tableCards[1], tableCards[2], tableCards[3], tableCards[4] }));
 }
 
 bool InitiateBidding(List<string> tableCards)

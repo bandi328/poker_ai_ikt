@@ -18,7 +18,7 @@ namespace Poker_AI
         {
 
             List<int> ints = new List<int>();
-            while(Card.Count != BaseCard.Count)
+            while (Card.Count != BaseCard.Count)
             {
                 int random = new Random().Next(52);
                 while (ints.Contains(random) == false)
