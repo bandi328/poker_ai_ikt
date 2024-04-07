@@ -1,6 +1,6 @@
 ﻿using Poker_AI;
 using System.Diagnostics.Contracts;
-
+Console.OutputEncoding = System.Text.Encoding.UTF8;
 
 //Játékmenet:
 //10$/20$ játék
@@ -24,30 +24,32 @@ using System.Diagnostics.Contracts;
 //3 kör után lapok mutatása, pénz jóváírása, új kör.
 //amíg valaki nem nyer, vagy amíg a játékos úgy nem dönt megy a játék
 
-Game game = new Game();
+
 Human human = new Human();
 AI ai = new AI();
-
+Game game = new Game(human, ai);
 bool decision = true;
 
 while (decision)
 {
+    Console.Clear();
     human.Hand = new List<string>{ };
     ai.Hand = new List<string>{ };
     Cards cards = new Cards();
     List<string> tableCards = new List<string> { };
+    for (int i = 0; i < 5; i++)
+    {
+        tableCards.Add("?");
+    }
 
     //beszállás
     Console.WriteLine($"Játékos tőke: {human.Money}");
     Console.WriteLine($"AI tőke: {ai.Money}");
     Console.WriteLine();
     Console.WriteLine("Játék: 5$\nKiszállás: 0$");
-    int bet;
-    do
-    {
-        bet = human.Bet(human.Money);
-    } while (bet == 5 && bet == 0);
-    decision = game.FirstBet(bet, human, ai);
+
+    //int bet = human.Bet(human.Money, 5, false);
+    decision = game.FirstBet();
     if (decision == false)
     {
         break;
@@ -55,52 +57,65 @@ while (decision)
     Thread.Sleep(2000);
     Console.Clear();
 
-
     game.Burning(cards);
     //osztás
-    for (int i = 0; i < 3; i++)
-    {
-        tableCards.Add(game.Dealing(cards));
-        if (i >= 1)
-        {
-            human.Hand.Add(game.Dealing(cards));
-            ai.Hand.Add(game.Dealing(cards));
-        }
-    }//
 
-    Console.WriteLine($"Játékos tőke: {human.Money}");
-    Console.WriteLine($"AI tőke: {ai.Money}");
-    Console.WriteLine();
-    
-    Console.WriteLine("\nOsztott lapok:");
-    game.HandListing(human);
-    //1. licit
-    int[] bidding = game.BiddingRound(human, ai);
-    
-    if (bidding[0] == 0)
+    for (int i = 0; i < 2; i++)
     {
-        Console.WriteLine($"AI nyert: {ai.Hand[0]}{ai.Hand[1]}");
+        human.Hand.Add(game.Dealing(cards));
+        ai.Hand.Add(game.Dealing(cards));
     }
+
+    //1. licit
+    if(InitiateBidding(tableCards))
+        break;
 
     //flop
-    Console.WriteLine("Kezdő osztás:");
-    foreach (var item in tableCards)
+    for (int i = 0; i < 3; i++)
     {
-        Console.WriteLine(item);
-    }
+        tableCards[i] = game.Dealing(cards);
+    }//
 
-    
+
     //2. licit
-
+    if (InitiateBidding(tableCards))
+        break;
 
     //turn
-
+    tableCards[3] = game.Dealing(cards);
 
     //3. licit
-
+    if (InitiateBidding(tableCards))
+        break;
 
     //river
 
 
     //4., utolsó licit 
+    if (InitiateBidding(tableCards))
+        break;
+}
+
+bool InitiateBidding(List<string> tableCards)
+{
+    Console.Clear();
+    Console.WriteLine($"Játékos tőke: {human.Money}$");
+    Console.WriteLine($"AI tőke: {ai.Money}$");
+    Console.WriteLine($"Nyeremény: {game.Pot}$");
+    Console.WriteLine($"Tét: {game.bet}$\n");
+    Console.WriteLine("Leosztás:");
+    foreach (var item in tableCards)
+    {
+        Console.WriteLine(item);
+    }
+    Console.WriteLine("\nOsztott lapok:");
+    game.HandListing(human);
+
+    bool isFolding = game.BiddingRound();
+    if (isFolding)
+    {
+        ai.Money += game.Pot;
+        return true;
+    }
+    return false;
 }
