@@ -29,6 +29,7 @@ Human human = new Human();
 AI ai = new AI();
 Game game = new Game(human, ai);
 bool decision = true;
+game.ReadScores();
 
 while (decision)
 {
@@ -37,6 +38,8 @@ while (decision)
     ai.Hand = new List<string>{ };
     Cards cards = new Cards();
     List<string> tableCards = new List<string> { };
+
+
     for (int i = 0; i < 5; i++)
     {
         tableCards.Add("?");
@@ -53,7 +56,7 @@ while (decision)
     {
         break;
     }
-    Thread.Sleep(2000);
+    //Thread.Sleep(200);
     Console.Clear();
 
     //osztás
@@ -65,14 +68,14 @@ while (decision)
     }
 
     //1. licit
-    if(InitiateBidding(tableCards))
+    if(InitiateBidding(tableCards, cards))
         break;
 
 
     Console.WriteLine(
     new HandCheck().CheckHand(new List<string> { ai.Hand[0], ai.Hand[1] })
     );
-    Thread.Sleep(5000);
+    Thread.Sleep(1200);
 
     //flop
     game.Burning(cards);
@@ -83,7 +86,7 @@ while (decision)
 
 
     //2. licit
-    if (InitiateBidding(tableCards))
+    if (InitiateBidding(tableCards, cards))
         break;
     Console.WriteLine(new HandCheck().CheckHand(new List<string> { ai.Hand[0], ai.Hand[1], tableCards[0], tableCards[1], tableCards[2] }));
 
@@ -93,7 +96,7 @@ while (decision)
     tableCards[3] = game.Dealing(cards);
 
     //3. licit
-    if (InitiateBidding(tableCards))
+    if (InitiateBidding(tableCards, cards))
         break;
     Console.WriteLine(new HandCheck().CheckHand(new List<string> { ai.Hand[0], ai.Hand[1], tableCards[0], tableCards[1], tableCards[2], tableCards[3] }));
 
@@ -102,13 +105,19 @@ while (decision)
     game.Burning(cards);
     tableCards[4] = game.Dealing(cards);
 
-    //4., utolsó licit 
-    if (InitiateBidding(tableCards))
+    //4., utolsó licit
+    if (InitiateBidding(tableCards, cards))
         break;
     Console.WriteLine(new HandCheck().CheckHand(new List<string> { ai.Hand[0], ai.Hand[1], tableCards[0], tableCards[1], tableCards[2], tableCards[3], tableCards[4] }));
+    int humanCheck = new HandCheck().CheckHand(new List<string> { human.Hand[0], human.Hand[1], tableCards[0], tableCards[1], tableCards[2], tableCards[3], tableCards[4] });
+
+    int aiCheck = new HandCheck().CheckHand(new List<string> { ai.Hand[0], ai.Hand[1], tableCards[0], tableCards[1], tableCards[2], tableCards[3], tableCards[4] });
+
+    game.RoundOver(game.DecideWinner(humanCheck, aiCheck, tableCards));
+
 }
 
-bool InitiateBidding(List<string> tableCards)
+bool InitiateBidding(List<string> tableCards, Cards cards)
 {
     Console.Clear();
     Console.WriteLine($"Játékos tőke: {human.Money}$");
@@ -123,7 +132,10 @@ bool InitiateBidding(List<string> tableCards)
     Console.WriteLine("\nOsztott lapok:");
     game.HandListing(human);
 
-    bool isFolding = game.BiddingRound();
+    //Console.WriteLine("\nAI lapjai: ");
+    //game.HandListing(ai);
+
+    bool isFolding = game.BiddingRound(cards, game, tableCards, ai);
     if (isFolding)
     {
         ai.Money += game.Pot;

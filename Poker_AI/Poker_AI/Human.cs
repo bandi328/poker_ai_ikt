@@ -14,7 +14,6 @@ namespace Poker_AI
             // 0 - passz (ha lehet)
             // [üresen hagyás] - eldobás
 
-
             int intBet = 1;
             string[] bet;
 
@@ -36,7 +35,7 @@ namespace Poker_AI
                 }
                 else if (intBet < minToBet && intBet != 0)
                 {
-                    Console.WriteLine($"Rossz összeget adott meg. Adja meg legalább a minimum tétnek megfelelő összeget ({minToBet}$).");
+                    Console.WriteLine($"Helytelen összeget adott meg. Adja meg legalább a minimum tétnek megfelelő összeget ({minToBet}$).");
                         if(!mustCall)
                             Console.WriteLine($"0-t is megadhat ha nem kíván kockáztatni");
                     Console.WriteLine("Eldobáshoz hagyja üresen a mezőt.");

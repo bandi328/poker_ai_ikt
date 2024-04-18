@@ -22,31 +22,31 @@ namespace Poker_AI
     public class HandCheck
     {
         private  List<Card> Hands = new List<Card> { };
-        public HandEnum CheckHand(List<string> tableAndPlayerHand)
+        public int CheckHand(List<string> tableAndPlayerHand)
         {
             for (int i = 0; i < tableAndPlayerHand.Count; i++)
             {
                 Hands.Add(new Card(tableAndPlayerHand[i][0], ConvertCharToInt(tableAndPlayerHand[i][1])));
             };
             if (IsRoyalFlush())
-                return HandEnum.RoyalFlush;
+                return (int)HandEnum.RoyalFlush;
             if (IsStraightFlush())
-                return HandEnum.StraightFlush;
+                return (int)HandEnum.StraightFlush;
             if (IsFourOfAKind())
-                return HandEnum.FourOfAKind;
+                return (int)HandEnum.FourOfAKind;
             if (IsFullHouse())
-                return HandEnum.FullHouse;
+                return (int)HandEnum.FullHouse;
             if (IsFlush())
-                return HandEnum.Flush;
+                return (int)HandEnum.Flush;
             if (IsStraight())
-                return HandEnum.Straight;
+                return (int)HandEnum.Straight;
             if (IsThreeOfAKind())
-                return HandEnum.ThreeOfAKind;
+                return (int)HandEnum.ThreeOfAKind;
             if (IsTwoPairs())
-                return HandEnum.TwoPairs;
+                return (int)HandEnum.TwoPairs;
             if (IsOnePair())
-                return HandEnum.OnePair;
-            return HandEnum.HighCard;
+                return (int)HandEnum.OnePair;
+            return (int)HandEnum.HighCard;
             //return (int)HandEnum.HighCard;
         }
 

@@ -28,3 +28,4 @@ C:\Users\Windows\OneDrive\Dokumentumok\poker\Poker_AI\Poker_AI\obj\Debug\net6.0\
 C:\Users\Windows\OneDrive\Dokumentumok\poker\Poker_AI\Poker_AI\obj\Debug\net6.0\Poker_AI.pdb
 C:\Users\Windows\OneDrive\Dokumentumok\poker\Poker_AI\Poker_AI\obj\Debug\net6.0\Poker_AI.genruntimeconfig.cache
 C:\Users\András\Desktop\poker_ai_ikt\Poker_AI\Poker_AI\obj\Debug\net6.0\Poker_AI.csproj.AssemblyReference.cache
+C:\Users\Windows\OneDrive\Dokumentumok\poker\Poker_AI\Poker_AI\bin\Debug\net6.0\Game.cs
